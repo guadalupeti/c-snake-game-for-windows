@@ -102,8 +102,8 @@ int main() {
         key = readDirection();
 
         walk(&current_X, &current_y, key);
-        if (&current_X == '@' || &current_y == '@') {
-            lost == 1;
+        if (map[current_X][current_y] == '@') {
+            lost = 1;
         }
 
         Sleep(16);
