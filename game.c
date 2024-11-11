@@ -2,6 +2,11 @@
 #include <conio.h>
 #include <stdlib.h>
 #include <windows.h>
+//______________________________________________________________
+//TO-DO
+//fazer as frutinhas pra cobra comer
+//adicionar a movimentação original do snake game
+//______________________________________________________________
 
 
 int readDirection() {
@@ -27,6 +32,7 @@ int readDirection() {
 
 int walk(int *current_x, int *current_y, int direction) {
     //direction summary -> left: 0 top: 1 right: 2 down: 3
+
 
     switch (direction)
     {
@@ -57,6 +63,7 @@ int walk(int *current_x, int *current_y, int direction) {
 int main() {
     char map[20][20];
     int lost;
+    int score;
     lost = 0;
 
     for (int i = 0; i < 20; i++) {
@@ -73,6 +80,11 @@ int main() {
     int key;
 
     while (1) {
+
+        if (lost == 1) {
+            break;
+        }
+
         
         system("cls");
         map[current_X][current_y] = '@';
@@ -90,11 +102,15 @@ int main() {
         key = readDirection();
 
         walk(&current_X, &current_y, key);
+        if (&current_X == '@' || &current_y == '@') {
+            lost == 1;
+        }
 
         Sleep(16);
 
         }
  
-
+    printf("Score: ");
+    printf("%d", &score);
         
 }
